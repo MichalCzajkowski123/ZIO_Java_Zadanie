@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/twoje-konto/calculator-java-app.git'
+                git 'https://github.com/MichalCzajkowski123/ZIO_Java_Zadanie.git'
             }
         }
         stage('Build') {
@@ -15,6 +15,11 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'mvn test'
+            }
+        }
+        stage('Test Report') {
+            steps {
+                junit '**/target/surefire-reports/*.xml'
             }
         }
     }
